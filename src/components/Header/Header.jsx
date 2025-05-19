@@ -1,6 +1,6 @@
 import React from "react";
 import ThemeSwitcher from "../ui/ThemeSwitcher";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import "./header.css";
 
 const Header = () => {
@@ -51,7 +51,9 @@ const Header = () => {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl pl-0">HobbyHub</a>
+          <Link to="/" className="text-xl font-bold cursor-pointer">
+            HobbyHub
+          </Link>
         </div>
 
         {/* center navbar */}
