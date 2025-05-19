@@ -1,14 +1,22 @@
 import React from "react";
 import ThemeSwitcher from "../ui/ThemeSwitcher";
+import { NavLink } from "react-router";
+import "./header.css";
 
 const Header = () => {
   const links = (
     <>
       <li>
-        <a>Item 1</a>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <a>Item 3</a>
+        <NavLink to="allgroup">All Groups</NavLink>
+      </li>
+      <li>
+        <NavLink to="creategroup">Create Group</NavLink>
+      </li>
+      <li>
+        <NavLink to="mygroup">My Groups</NavLink>
       </li>
     </>
   );
