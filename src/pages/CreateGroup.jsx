@@ -1,12 +1,30 @@
-import React from "react";
+import React, { use } from "react";
+import { AuthContext } from "../providers/AuthContext";
+import Spinner from "../components/ui/Spinner";
 
 const CreateGroup = () => {
+  const { user } = use(AuthContext);
+
+  if (!user) return <Spinner />;
+
+  const handleCreateGroup = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const newCoffe = Object.fromEntries(formData.entries());
+
+    console.log(newCoffe);
+  };
+
   return (
-    <div className="w-11/12 mx-auto my-12 p-6 bg-base-100 rounded-xl shadow-lg">
+    <div className="w-11/12 mx-auto mt-8 mb-12 p-6 bg-base-100 rounded-xl shadow-lg">
       <h2 className="text-3xl font-bold text-center mb-8">
         Create a New Group
       </h2>
-      <form className="space-y-5 max-w-3xl mx-auto">
+      <form
+        onSubmit={handleCreateGroup}
+        className="space-y-5 max-w-3xl mx-auto"
+      >
         <div className="grid sm:grid-cols-2 gap-4">
           <div className="form-control">
             <label className="label font-semibold">Group Name</label>
@@ -26,7 +44,7 @@ const CreateGroup = () => {
               name="hobbyCategory"
               className="select select-bordered w-full"
             >
-              <option disabled selected>
+              <option value="" disabled>
                 Select a category
               </option>
               <option>Drawing & Painting</option>
@@ -105,7 +123,8 @@ const CreateGroup = () => {
             <input
               type="text"
               className="input input-bordered bg-base-200 w-full"
-              value="Hamad Ismail"
+              name="name"
+              value={user.displayName}
               readOnly
             />
           </div>
@@ -115,15 +134,18 @@ const CreateGroup = () => {
             <br />
             <input
               type="email"
+              name="email"
               className="input input-bordered bg-base-200 w-full"
-              value="hamad@email.com"
+              value={user.email}
               readOnly
             />
           </div>
         </div>
 
         <div className="text-center pt-4">
-          <button className="btn btn-outline w-full">Create Group</button>
+          <button type="submit" className="btn btn-outline w-full">
+            Create Group
+          </button>
         </div>
       </form>
     </div>
