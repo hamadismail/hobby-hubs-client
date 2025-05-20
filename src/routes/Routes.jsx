@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import AllGroup from "../pages/AllGroup";
 import CreateGroup from "../pages/CreateGroup";
 import MyGroup from "../pages/MyGroup";
+import Login from "../pages/Login";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "mygroup",
         Component: MyGroup,
+      },
+      {
+        path: "auth/login",
+        Component: Login,
       },
     ],
   },

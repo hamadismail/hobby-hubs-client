@@ -67,9 +67,12 @@ const Header = () => {
           <div className="mr-4">
             <ThemeSwitcher />
           </div>
-          <a className="btn rounded-lg bg-neutral text-neutral-content">
+          <Link
+            to="/auth/login"
+            className="btn rounded-lg bg-neutral text-neutral-content"
+          >
             Login
-          </a>
+          </Link>
         </div>
       </div>
     </div>

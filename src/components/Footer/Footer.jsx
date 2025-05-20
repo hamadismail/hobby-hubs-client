@@ -28,9 +28,10 @@ const Footer = () => {
             </p>
             <div className="flex gap-4 mt-4 text-xl text-gray-600">
               <FaXTwitter className="hover:text-neutral cursor-pointer" />
-              <FaInstagram className="hover:text-neutral cursor-pointer" />
+              <FaLinkedin className="hover:text-neutral cursor-pointer" />
               <FaFacebook className="hover:text-neutral cursor-pointer" />
               <FaGithub className="hover:text-neutral cursor-pointer" />
+              <FaInstagram className="hover:text-neutral cursor-pointer" />
             </div>
           </div>
 
