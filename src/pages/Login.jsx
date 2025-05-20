@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { FaGoogle } from "react-icons/fa6";
 import hobbyImg from "../assets/hobby.png";
 import { Link, useLocation, useNavigate } from "react-router";
@@ -10,6 +10,7 @@ const Login = () => {
   const { logIn, loader, setLoader, googleLogIn } = use(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [err, setErr] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -36,6 +37,7 @@ const Login = () => {
         // const errorMessage = error.message;
         // toast.error(errorCode);
         setLoader(false);
+        setErr("Invalid Creadentials");
         Swal.fire({
           position: "top",
           icon: "error",
@@ -119,10 +121,11 @@ const Login = () => {
             />
           </label>
 
-          <div className="text-right mb-4">
+          <div className="mb-4 flex items-center justify-between">
             <a className="text-sm text-success hover:underline cursor-pointer">
               Forgot password?
             </a>
+            {err && <p className="text-sm text-error">{err}</p>}
           </div>
 
           <button type="submit" className="btn btn-neutral w-full mb-4">

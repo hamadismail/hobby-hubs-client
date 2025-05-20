@@ -25,6 +25,7 @@ const SignUp = () => {
       setErr(
         "Password must contain at least 1 uppercase letter, 1 lowercase letter, and be at least 6 characters long."
       );
+      return;
     } else {
       setErr("");
     }
