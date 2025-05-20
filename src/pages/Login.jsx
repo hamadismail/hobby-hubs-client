@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import Spinner from "../components/ui/Spinner";
 
 const Login = () => {
-  const { logIn, loader, setLoader } = use(AuthContext);
+  const { logIn, loader, setLoader, googleLogIn } = use(AuthContext);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -42,6 +42,30 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+      });
+  };
+
+  const handleGoogleLogIn = () => {
+    googleLogIn()
+      .then((result) => {
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "Login Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        Swal.fire({
+          position: "top",
+          icon: "error",
+          title: error.code,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setLoading(false);
       });
   };
 
@@ -106,7 +130,10 @@ const Login = () => {
 
           <div className="divider">or</div>
 
-          <button className="btn btn-outline w-full flex items-center gap-2 mb-4">
+          <button
+            onClick={handleGoogleLogIn}
+            className="btn btn-outline w-full flex items-center gap-2 mb-4"
+          >
             <FaGoogle />
             Sign in with Google
           </button>
