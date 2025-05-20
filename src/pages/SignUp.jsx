@@ -7,7 +7,8 @@ import Spinner from "../components/ui/Spinner";
 
 const SignUp = () => {
   const [err, setErr] = useState("");
-  const { user, setUser, loader, setLoader, signUp } = use(AuthContext);
+  const { user, setUser, loader, setLoader, signUp, updateUser } =
+    use(AuthContext);
   const navigate = useNavigate();
 
   const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
@@ -38,12 +39,19 @@ const SignUp = () => {
           timer: 1500,
         });
         // Signed up
-        const userInfo = {
-          ...result.user,
-          photoURL: photo,
-          displayName: name,
-        };
-        setUser(userInfo);
+        const userInfo = result.user;
+
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            // Profile updated!
+            setUser({ ...userInfo, displayName: name, photoURL: photo });
+            // ...
+          })
+          .catch((error) => {
+            // An error occurred
+            setUser(userInfo);
+            // ...
+          });
         navigate("/");
 
         // ...

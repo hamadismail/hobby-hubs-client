@@ -3,6 +3,7 @@ import ThemeSwitcher from "../ui/ThemeSwitcher";
 import { Link, NavLink, useNavigate } from "react-router";
 import "./header.css";
 import { AuthContext } from "../../providers/AuthContext";
+import { Tooltip } from "react-tooltip";
 
 const Header = () => {
   const { user, setUser, logOut } = use(AuthContext);
@@ -38,6 +39,7 @@ const Header = () => {
 
   return (
     <div className="bg-base-100 shadow-sm">
+      <Tooltip id="my-tooltip" />
       <div className="navbar p-0 w-11/12 mx-auto">
         {/* navbar start */}
         <div className="navbar-start">
@@ -85,6 +87,9 @@ const Header = () => {
           {user ? (
             <div className="flex items-center gap-2">
               <img
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={user.displayName}
+                data-tooltip-place="top"
                 className="h-8 w-8 cursor-pointer object-cover border-2 rounded-full"
                 src={user.photoURL}
               />
