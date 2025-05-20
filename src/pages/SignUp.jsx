@@ -1,9 +1,26 @@
-import React from "react";
-import { FaGoogle } from "react-icons/fa6";
+import React, { useState } from "react";
 import hobbyImg from "../assets/hobby.png";
 import { Link } from "react-router";
 
 const SignUp = () => {
+  const [err, setErr] = useState("");
+
+  const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const pwd = form.password.value;
+
+    if (!regex.test(pwd)) {
+      setErr(
+        "Password must contain at least 1 uppercase letter, 1 lowercase letter, and be at least 6 characters long."
+      );
+    } else {
+      setErr("");
+    }
+  };
+
   return (
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 bg-base-100">
       {/* Left side - Illustration + Description */}
@@ -32,7 +49,7 @@ const SignUp = () => {
         </h1>
 
         {/* Form */}
-        <div className="max-w-md md:w-4/6">
+        <form onSubmit={handleSignUp} className="max-w-md md:w-4/6">
           <label className="form-control w-full mb-4">
             <span className="label-text mb-1">Name</span>
             <input
@@ -70,7 +87,11 @@ const SignUp = () => {
             />
           </label>
 
-          <button className="btn btn-neutral w-full mb-4">Sign Up</button>
+          {err && <label className="text-error mb-8">{err}</label>}
+
+          <button type="submit" className="btn btn-neutral w-full my-4">
+            Sign Up
+          </button>
 
           <p className="text-sm text-ce1nter text-base-content">
             Already have and account?{" "}
@@ -78,7 +99,7 @@ const SignUp = () => {
               Login Account
             </Link>
           </p>
-        </div>
+        </form>
       </div>
     </div>
   );
