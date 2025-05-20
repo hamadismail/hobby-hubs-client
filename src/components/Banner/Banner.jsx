@@ -38,7 +38,7 @@ const hobbies = [
 
 const Banner = () => {
   return (
-    <section className="relative min-h-screen">
+    <section className="relative">
       <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between px-10 py-20 gap-10">
         {/* Left Content */}
         <div className="max-w-xl space-y-6">
