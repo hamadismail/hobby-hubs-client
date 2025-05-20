@@ -1,9 +1,24 @@
-import React from "react";
+import React, { use } from "react";
 import ThemeSwitcher from "../ui/ThemeSwitcher";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import "./header.css";
+import { AuthContext } from "../../providers/AuthContext";
 
 const Header = () => {
+  const { user, setUser, logOut } = use(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        // Sign-out successful.
+        setUser(null);
+        navigate("/");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
   const links = (
     <>
       <li>
@@ -67,12 +82,27 @@ const Header = () => {
           <div className="mr-4">
             <ThemeSwitcher />
           </div>
-          <Link
-            to="/auth/login"
-            className="btn rounded-lg bg-neutral text-neutral-content"
-          >
-            Login
-          </Link>
+          {user ? (
+            <div className="flex items-center gap-2">
+              <img
+                className="h-8 w-8 cursor-pointer object-cover border-2 rounded-full"
+                src={user.photoURL}
+              />
+              <button
+                onClick={handleLogOut}
+                className="btn rounded-lg bg-neutral text-neutral-content"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link
+              to="/auth/login"
+              className="btn rounded-lg bg-neutral text-neutral-content"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

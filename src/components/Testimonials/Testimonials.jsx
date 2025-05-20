@@ -23,7 +23,7 @@ const testimonials = [
 ];
 
 const Testimonials = () => (
-  <section className="w-11/12 mx-auto my-12 text-center">
+  <section className="w-11/12 mx-auto my-16 text-center">
     <h2 className="text-3xl font-bold mb-6">What Our Users Say</h2>
     <p className="max-w-2xl mx-auto mb-10">
       Hear from real people building real communities through HobbyHub.

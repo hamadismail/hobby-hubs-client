@@ -1,25 +1,71 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import hobbyImg from "../assets/hobby.png";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../providers/AuthContext";
+import Swal from "sweetalert2";
+import Spinner from "../components/ui/Spinner";
 
 const SignUp = () => {
   const [err, setErr] = useState("");
+  const { user, setUser, loader, setLoader, signUp } = use(AuthContext);
+  const navigate = useNavigate();
 
   const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
-    const pwd = form.password.value;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
 
-    if (!regex.test(pwd)) {
+    if (!regex.test(password)) {
       setErr(
         "Password must contain at least 1 uppercase letter, 1 lowercase letter, and be at least 6 characters long."
       );
     } else {
       setErr("");
     }
+
+    signUp(email, password)
+      .then((result) => {
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "Account Created Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        // Signed up
+        const userInfo = {
+          ...result.user,
+          photoURL: photo,
+          displayName: name,
+        };
+        setUser(userInfo);
+        navigate("/");
+
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        // const errorMessage = error.message;
+        // alert(errorCode);
+        setLoader(false);
+        Swal.fire({
+          position: "top",
+          icon: "error",
+          title: errorCode,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        // toast.error(errorCode);
+        // ..
+      });
   };
+
+  if (loader) return <Spinner />;
 
   return (
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 bg-base-100">

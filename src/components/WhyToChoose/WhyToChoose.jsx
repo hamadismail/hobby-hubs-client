@@ -2,7 +2,7 @@ import React from "react";
 import { FaUsers, FaGlobe, FaSmile } from "react-icons/fa";
 
 const WhyToChoose = () => (
-  <section className="w-11/12 mx-auto my-12 px-4 text-center">
+  <section className="w-11/12 mx-auto my-16 px-4 text-center">
     <h2 className="text-3xl font-bold mb-6">Why Choose HobbyHub?</h2>
     <p className="max-w-2xl mx-auto mb-10">
       HobbyHub makes it easy to connect with like-minded people, explore new

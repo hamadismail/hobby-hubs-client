@@ -1,9 +1,51 @@
-import React from "react";
+import React, { use } from "react";
 import { FaGoogle } from "react-icons/fa6";
 import hobbyImg from "../assets/hobby.png";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../providers/AuthContext";
+import Swal from "sweetalert2";
+import Spinner from "../components/ui/Spinner";
 
 const Login = () => {
+  const { logIn, loader, setLoader } = use(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    logIn(email, password)
+      .then((result) => {
+        // Signed in
+        // const userInfo = userCredential.user;
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "Login Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(`${location.state ? location.state : "/"}`);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        // const errorMessage = error.message;
+        // toast.error(errorCode);
+        setLoader(false);
+        Swal.fire({
+          position: "top",
+          icon: "error",
+          title: errorCode,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
+
+  if (loader) return <Spinner />;
   return (
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 bg-base-100">
       {/* Left side - Illustration + Description */}
@@ -32,11 +74,12 @@ const Login = () => {
         </h1>
 
         {/* Form */}
-        <div className="max-w-md md:w-4/6">
+        <form onSubmit={handleLogin} className="max-w-md md:w-4/6">
           <label className="form-control w-full mb-4">
             <span className="label-text mb-1">Email</span>
             <input
               type="text"
+              name="email"
               placeholder="hamad.ismail.gub@gmail.com"
               className="input input-bordered w-full"
             />
@@ -44,7 +87,11 @@ const Login = () => {
 
           <label className="form-control w-full mb-2">
             <span className="label-text mb-1">Password</span>
-            <input type="password" className="input input-bordered w-full" />
+            <input
+              type="password"
+              name="password"
+              className="input input-bordered w-full"
+            />
           </label>
 
           <div className="text-right mb-4">
@@ -53,7 +100,9 @@ const Login = () => {
             </a>
           </div>
 
-          <button className="btn btn-neutral w-full mb-4">Sign in</button>
+          <button type="submit" className="btn btn-neutral w-full mb-4">
+            Sign in
+          </button>
 
           <div className="divider">or</div>
 
@@ -68,7 +117,7 @@ const Login = () => {
               Create an Account
             </Link>
           </p>
-        </div>
+        </form>
       </div>
     </div>
   );
