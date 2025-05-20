@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import { FaGoogle } from "react-icons/fa6";
 import hobbyImg from "../assets/hobby.png";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../providers/AuthContext";
 import Swal from "sweetalert2";
 import Spinner from "../components/ui/Spinner";
@@ -9,6 +9,7 @@ import Spinner from "../components/ui/Spinner";
 const Login = () => {
   const { logIn, loader, setLoader, googleLogIn } = use(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogin = (e) => {
     e.preventDefault();
