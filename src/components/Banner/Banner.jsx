@@ -82,8 +82,10 @@ const Banner = () => {
                   }}
                 >
                   <div className="absolute inset-0 bg-opacity-50 p-4 flex flex-col justify-end">
-                    <p className="text-sm text-success">{hobby.country}</p>
-                    <h3 className="text-lg font-bold text-warning">
+                    <p className="text-sm text-success font-semibold">
+                      {hobby.country}
+                    </p>
+                    <h3 className="text-lg font-bold text-accent-content">
                       {hobby.title}
                     </h3>
                   </div>
