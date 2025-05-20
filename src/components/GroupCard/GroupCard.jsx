@@ -31,7 +31,7 @@ const GroupCard = ({ group }) => {
             onClick={() => navigate(`/group/${_id}`)}
             className="btn btn-sm btn-outline"
           >
-            Join Group
+            See More
           </button>
         </div>
       </div>
