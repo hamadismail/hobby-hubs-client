@@ -26,13 +26,13 @@ const Header = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="allgroup">All Groups</NavLink>
+        <NavLink to="groups">All Groups</NavLink>
       </li>
       <li>
-        <NavLink to="creategroup">Create Group</NavLink>
+        <NavLink to="createGroup">Create Group</NavLink>
       </li>
       <li>
-        <NavLink to="mygroup">My Groups</NavLink>
+        <NavLink to="myGroups">My Groups</NavLink>
       </li>
     </>
   );

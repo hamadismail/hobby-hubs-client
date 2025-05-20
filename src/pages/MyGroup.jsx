@@ -57,7 +57,10 @@ const MyGroup = () => {
                     >
                       <FaInfoCircle className="text-sm" />
                     </button>
-                    <button className="btn btn-sm flex items-center gap-1">
+                    <button
+                      onClick={() => navigate(`/updateGroup/${group._id}`)}
+                      className="btn btn-sm flex items-center gap-1"
+                    >
                       <FaEdit className="text-sm" />
                     </button>
                     <button className="btn btn-sm text-error flex items-center gap-1">

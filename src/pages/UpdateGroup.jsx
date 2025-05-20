@@ -1,34 +1,44 @@
-import React, { use } from "react";
-import { AuthContext } from "../providers/AuthContext";
+import React from "react";
 import Spinner from "../components/ui/Spinner";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 
-const CreateGroup = () => {
-  const { user } = use(AuthContext);
+const UpdateGroup = () => {
   const navigate = useNavigate();
 
-  if (!user) return <Spinner />;
+  const group = useLoaderData();
+  const {
+    _id,
+    groupName,
+    hobbyCategory,
+    description,
+    location,
+    members,
+    date,
+    url,
+    name,
+    email,
+  } = group || {};
 
-  const handleCreateGroup = (e) => {
+  const handleUpdateGroup = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const newHobby = Object.fromEntries(formData.entries());
+    const updateHobby = Object.fromEntries(formData.entries());
 
-    fetch("http://localhost:3000/hobbies", {
-      method: "POST",
+    fetch(`http://localhost:3000/hobbies/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newHobby),
+      body: JSON.stringify(updateHobby),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
+        if (data.modifiedCount) {
           navigate("/myGroups");
           Swal.fire({
-            title: "New Hobby Category added successfully!",
+            title: "Hobby Category updated successfully!",
             icon: "success",
             draggable: true,
           });
@@ -40,11 +50,9 @@ const CreateGroup = () => {
 
   return (
     <div className="w-11/12 mx-auto mt-8 mb-12 p-6 bg-base-100 rounded-xl shadow-lg">
-      <h2 className="text-3xl font-bold text-center mb-8">
-        Create a New Group
-      </h2>
+      <h2 className="text-3xl font-bold text-center mb-8">Update Group</h2>
       <form
-        onSubmit={handleCreateGroup}
+        onSubmit={handleUpdateGroup}
         className="space-y-5 max-w-3xl mx-auto"
       >
         <div className="grid sm:grid-cols-2 gap-4">
@@ -54,6 +62,7 @@ const CreateGroup = () => {
             <input
               type="text"
               name="groupName"
+              defaultValue={groupName}
               className="input input-bordered w-full"
               placeholder="Enter group name"
             />
@@ -64,6 +73,7 @@ const CreateGroup = () => {
             <br />
             <select
               name="hobbyCategory"
+              defaultValue={hobbyCategory}
               className="select select-bordered w-full"
             >
               <option value="" disabled>
@@ -86,6 +96,7 @@ const CreateGroup = () => {
           <br />
           <textarea
             name="description"
+            defaultValue={description}
             className="textarea textarea-bordered w-full"
             placeholder="Brief description..."
           />
@@ -98,6 +109,7 @@ const CreateGroup = () => {
             <input
               type="text"
               name="location"
+              defaultValue={location}
               className="input input-bordered w-full"
               placeholder="Dhaka, Bangladesh"
             />
@@ -109,6 +121,7 @@ const CreateGroup = () => {
             <input
               type="number"
               name="members"
+              defaultValue={members}
               className="input input-bordered w-full"
               placeholder="e.g. 20"
             />
@@ -122,6 +135,7 @@ const CreateGroup = () => {
             <input
               type="date"
               name="date"
+              defaultValue={date}
               className="input input-bordered w-full"
             />
           </div>
@@ -132,6 +146,7 @@ const CreateGroup = () => {
             <input
               type="url"
               name="url"
+              defaultValue={url}
               className="input input-bordered w-full"
               placeholder="https://..."
             />
@@ -146,7 +161,7 @@ const CreateGroup = () => {
               type="text"
               className="input input-bordered bg-base-200 w-full"
               name="name"
-              value={user.displayName}
+              value={name}
               readOnly
             />
           </div>
@@ -158,7 +173,7 @@ const CreateGroup = () => {
               type="email"
               name="email"
               className="input input-bordered bg-base-200 w-full"
-              value={user.email}
+              value={email}
               readOnly
             />
           </div>
@@ -166,7 +181,7 @@ const CreateGroup = () => {
 
         <div className="text-center pt-4">
           <button type="submit" className="btn btn-outline w-full">
-            Create Group
+            Update Group
           </button>
         </div>
       </form>
@@ -174,4 +189,4 @@ const CreateGroup = () => {
   );
 };
 
-export default CreateGroup;
+export default UpdateGroup;

@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import GroupDetails from "../components/GroupDetails/GroupDetails";
 import PrivateRoute from "./PrivateRoute";
+import UpdateGroup from "../pages/UpdateGroup";
 
 export const router = createBrowserRouter([
   {
@@ -20,12 +21,12 @@ export const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: "allgroup",
+        path: "groups",
         loader: () => fetch("http://localhost:3000/hobbies"),
         Component: AllGroup,
       },
       {
-        path: "creategroup",
+        path: "createGroup",
         element: (
           <PrivateRoute>
             <CreateGroup />
@@ -33,13 +34,19 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "mygroup",
+        path: "myGroups",
         loader: () => fetch("http://localhost:3000/hobbies"),
         element: (
           <PrivateRoute>
             <MyGroup />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "updateGroup/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/hobbies/${params.id}`),
+        Component: UpdateGroup,
       },
       {
         path: "group/:id",
