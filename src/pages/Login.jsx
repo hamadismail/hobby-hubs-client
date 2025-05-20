@@ -15,7 +15,7 @@ const Login = () => {
         />
         <div className="text-center mt-6">
           <h2 className="text-2xl font-semibold">Hobby Hub</h2>
-          <p className="text-sm text-gray-600 mt-2 max-w-xs mx-auto">
+          <p className="text-sm text-base-content mt-2 max-w-xs mx-auto">
             Discover and join local hobby groups — from book clubs to hiking
             crews. Build communities around your passions.
           </p>
@@ -62,7 +62,7 @@ const Login = () => {
             Sign in with Google
           </button>
 
-          <p className="text-sm text-ce1nter text-gray-600">
+          <p className="text-sm text-ce1nter text-base-content">
             Are you new?{" "}
             <Link to="/auth/signup" className="text-success hover:underline">
               Create an Account
