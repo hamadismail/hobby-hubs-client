@@ -28,7 +28,7 @@ const GroupCard = ({ group }) => {
         <div className="mt-2 text-xs">🌍 {location}</div>
         <div className="card-actions justify-end mt-4">
           <button
-            onClick={() => navigate("/group/1")}
+            onClick={() => navigate(`/group/${_id}`)}
             className="btn btn-sm btn-outline"
           >
             Join Group

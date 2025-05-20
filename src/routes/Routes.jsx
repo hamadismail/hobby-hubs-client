@@ -15,6 +15,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: () => fetch("http://localhost:3000/hobbies"),
         Component: Home,
       },
       {
@@ -31,7 +32,9 @@ export const router = createBrowserRouter([
         Component: MyGroup,
       },
       {
-        path: "group/1",
+        path: "group/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/hobbies/${params.id}`),
         Component: GroupDetails,
       },
       {
