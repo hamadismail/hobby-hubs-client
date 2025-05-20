@@ -1,9 +1,12 @@
 import React, { use } from "react";
 import { AuthContext } from "../providers/AuthContext";
 import Spinner from "../components/ui/Spinner";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 const CreateGroup = () => {
   const { user } = use(AuthContext);
+  const navigate = useNavigate();
 
   if (!user) return <Spinner />;
 
@@ -11,9 +14,28 @@ const CreateGroup = () => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const newCoffe = Object.fromEntries(formData.entries());
+    const newHobby = Object.fromEntries(formData.entries());
 
-    console.log(newCoffe);
+    fetch("http://localhost:3000/hobbies", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newHobby),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        navigate("/allgroup");
+        if (data.insertedId) {
+          Swal.fire({
+            title: "New Hobby Category added successfully!",
+            icon: "success",
+            draggable: true,
+          });
+
+          form.reset();
+        }
+      });
   };
 
   return (
