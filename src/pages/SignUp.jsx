@@ -3,7 +3,7 @@ import { FaGoogle } from "react-icons/fa6";
 import hobbyImg from "../assets/hobby.png";
 import { Link } from "react-router";
 
-const Login = () => {
+const SignUp = () => {
   return (
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 bg-base-100">
       {/* Left side - Illustration + Description */}
@@ -34,38 +34,48 @@ const Login = () => {
         {/* Form */}
         <div className="w-full md:w-3/5">
           <label className="form-control w-full mb-4">
-            <span className="label-text mb-1">Email</span>
+            <span className="label-text mb-1">Name</span>
             <input
               type="text"
+              placeholder="Hamad Ismail"
+              name="name"
+              className="input input-bordered w-full"
+            />
+          </label>
+          <label className="form-control w-full mb-4">
+            <span className="label-text mb-1">Email</span>
+            <input
+              type="email"
               placeholder="hamad.ismail.gub@gmail.com"
+              name="email"
+              className="input input-bordered w-full"
+            />
+          </label>
+          <label className="form-control w-full mb-4">
+            <span className="label-text mb-1">Photo URL</span>
+            <input
+              type="text"
+              placeholder=""
+              name="photo"
               className="input input-bordered w-full"
             />
           </label>
 
           <label className="form-control w-full mb-2">
             <span className="label-text mb-1">Password</span>
-            <input type="password" className="input input-bordered w-full" />
+            <input
+              type="password"
+              name="password"
+              className="input input-bordered w-full mb-4"
+            />
           </label>
 
-          <div className="text-right mb-4">
-            <a className="text-sm text-success hover:underline cursor-pointer">
-              Forgot password?
-            </a>
-          </div>
-
-          <button className="btn btn-neutral w-full mb-4">Sign in</button>
-
-          <div className="divider">or</div>
-
-          <button className="btn btn-outline w-full flex items-center gap-2 mb-4">
-            <FaGoogle />
-            Sign in with Google
-          </button>
+          <button className="btn btn-neutral w-full mb-4">Sign Up</button>
 
           <p className="text-sm text-ce1nter text-gray-600">
-            Are you new?{" "}
-            <Link to="/auth/signup" className="text-success hover:underline">
-              Create an Account
+            Already have and account?{" "}
+            <Link to="/auth/login" className="text-success hover:underline">
+              Login Account
             </Link>
           </p>
         </div>
@@ -74,4 +84,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
