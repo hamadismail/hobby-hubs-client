@@ -32,7 +32,7 @@ const Login = () => {
         </h1>
 
         {/* Form */}
-        <div className="w-full md:w-3/5">
+        <div className="max-w-md md:w-4/6">
           <label className="form-control w-full mb-4">
             <span className="label-text mb-1">Email</span>
             <input
