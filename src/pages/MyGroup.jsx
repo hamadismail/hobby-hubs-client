@@ -26,7 +26,7 @@ const MyGroup = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/hobbies/${id}`, {
+        fetch(`https://hobby-hub-server-seven.vercel.app/hobbies/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

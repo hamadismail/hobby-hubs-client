@@ -21,13 +21,15 @@ export const router = createBrowserRouter([
       {
         index: true,
         hydrateFallbackElement: <Spinner />,
-        loader: () => fetch("http://localhost:3000/hobbies"),
+        loader: () =>
+          fetch("https://hobby-hub-server-seven.vercel.app/hobbies"),
         Component: Home,
       },
       {
         path: "groups",
         hydrateFallbackElement: <Spinner />,
-        loader: () => fetch("http://localhost:3000/hobbies"),
+        loader: () =>
+          fetch("https://hobby-hub-server-seven.vercel.app/hobbies"),
         Component: AllGroup,
       },
       {
@@ -41,7 +43,8 @@ export const router = createBrowserRouter([
       {
         path: "myGroups",
         hydrateFallbackElement: <Spinner />,
-        loader: () => fetch("http://localhost:3000/hobbies"),
+        loader: () =>
+          fetch("https://hobby-hub-server-seven.vercel.app/hobbies"),
         element: (
           <PrivateRoute>
             <MyGroup />
@@ -52,14 +55,18 @@ export const router = createBrowserRouter([
         path: "updateGroup/:id",
         hydrateFallbackElement: <Spinner />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/hobbies/${params.id}`),
+          fetch(
+            `https://hobby-hub-server-seven.vercel.app/hobbies/${params.id}`
+          ),
         Component: UpdateGroup,
       },
       {
         path: "group/:id",
         hydrateFallbackElement: <Spinner />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/hobbies/${params.id}`),
+          fetch(
+            `https://hobby-hub-server-seven.vercel.app/hobbies/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <GroupDetails />
