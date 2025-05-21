@@ -58,7 +58,11 @@ export const router = createBrowserRouter([
           fetch(
             `https://hobby-hub-server-seven.vercel.app/hobbies/${params.id}`
           ),
-        Component: UpdateGroup,
+        element: (
+          <PrivateRoute>
+            <UpdateGroup />
+          </PrivateRoute>
+        ),
       },
       {
         path: "group/:id",
