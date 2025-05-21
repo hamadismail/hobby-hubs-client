@@ -1,7 +1,6 @@
 # HobbyHub - Client Side
 
 🔗 **Live Website**: [https://hobbyhubss.web.app/](https://hobbyhubss.web.app/)
-🔗 **GitHub Repo**: [Client Repository](https://github.com/Programming-Hero-Web-Course4/b11a10-client-side-hamadismail)
 
 ## 📚 About the Project
 
