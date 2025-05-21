@@ -7,6 +7,7 @@ import hiking from "../../assets/hiking.jpg";
 import painting from "../../assets/painting.jpg";
 import photography from "../../assets/photography.jpg";
 import game from "../../assets/game.jpg";
+import { Typewriter } from "react-simple-typewriter";
 
 const hobbies = [
   {
@@ -44,7 +45,24 @@ const Banner = () => {
         <div className="max-w-xl space-y-6">
           <h4 className="text-xl font-medium text-success">HobbyHub</h4>
           <h1 className="text-3xl md:text-4xl font-bold leading-tight">
-            CONNECT THROUGH PASSIONS
+            CONNECT THROUGH{" "}
+            <p className="text-success">
+              <Typewriter
+                words={[
+                  "PASSIONS",
+                  "CREATIVITY",
+                  "ADVENTURES",
+                  "LEARNING",
+                  "CRAFTING",
+                ]}
+                loop={5}
+                cursor
+                cursorStyle="_"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              />
+            </p>
           </h1>
           <p className="text-base-content">
             Discover and join local hobby groups — book clubs, hiking crews, art
