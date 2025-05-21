@@ -10,10 +10,12 @@ import GroupDetails from "../components/GroupDetails/GroupDetails";
 import PrivateRoute from "./PrivateRoute";
 import UpdateGroup from "../pages/UpdateGroup";
 import Spinner from "../components/ui/Spinner";
+import Error from "../pages/Error";
 
 export const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <Error />,
     Component: MainLayout,
     children: [
       {
