@@ -1,12 +1,47 @@
-# React + Vite
+# HobbyHub - Client Side
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔗 **Live Website**: [https://hobbyhubss.web.app/](https://hobbyhubss.web.app/)
+🔗 **GitHub Repo**: [Client Repository](https://github.com/Programming-Hero-Web-Course4/b11a10-client-side-hamadismail)
 
-Currently, two official plugins are available:
+## 📚 About the Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**HobbyHub** is a community-driven platform where users can create and join local hobby groups. Whether it’s painting, hiking, or gaming, users can find like-minded individuals to share their passions with.
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Firebase Authentication (Email/Password & Google)
+- Protected Routes using React Router
+- Create, Read, Update, Delete hobby groups
+- Join button disabled after group start date
+- SweetAlert2 and React Toastify for alerts
+- Responsive design (mobile, tablet, desktop)
+- Dark/Light theme toggle
+- Typewriter and animation effects
+- Error 404 page and loading spinners
+
+## 🛠️ Tech Stack
+
+- React, React Router
+- Tailwind CSS, DaisyUI
+- Firebase Auth
+- SweetAlert2, React Simple Typewriter, React Tooltip
+
+## ⚙️ Environment Variables
+
+Create a `.env.local` file and add:
+
+```bash
+VITE_apiKey=your_firebase_api_key
+VITE_authDomain=your_project.firebaseapp.com
+VITE_projectId=your_project_id
+VITE_storageBucket=your_bucket
+VITE_messagingSenderId=your_sender_id
+VITE_appId=your_app_id
+```
+
+## 📦 Installation
+
+```bash
+npm install
+npm run dev
+```
