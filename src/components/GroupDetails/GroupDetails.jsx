@@ -1,8 +1,10 @@
 import React from "react";
 import { useLoaderData } from "react-router";
+import Error from "../../pages/Error";
 
 const GroupDetails = () => {
   const group = useLoaderData();
+
   const {
     _id,
     groupName,
@@ -15,6 +17,8 @@ const GroupDetails = () => {
     name,
     email,
   } = group || {};
+
+  if (!_id) return <Error />;
 
   const today = new Date();
   const groupStartDate = new Date(date);
