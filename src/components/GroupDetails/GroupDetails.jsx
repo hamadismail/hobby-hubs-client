@@ -15,6 +15,11 @@ const GroupDetails = () => {
     name,
     email,
   } = group || {};
+
+  const today = new Date();
+  const groupStartDate = new Date(date);
+  const isExpired = today > groupStartDate;
+
   return (
     <div className="w-11/12 md:w-10/12 mx-auto px-4 py-10">
       <div className="bg-base-100 shadow-xl rounded-xl overflow-hidden">
@@ -50,7 +55,15 @@ const GroupDetails = () => {
               </p>
             </div>
 
-            <button className="btn btn-outline mt-4 w-full">Join Group</button>
+            {isExpired ? (
+              <p className="text-error font-semibold mt-4">
+                This group is no longer active.
+              </p>
+            ) : (
+              <button className="btn btn-outline mt-4 w-full">
+                Join Group
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -60,7 +60,11 @@ export const router = createBrowserRouter([
         hydrateFallbackElement: <Spinner />,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/hobbies/${params.id}`),
-        Component: GroupDetails,
+        element: (
+          <PrivateRoute>
+            <GroupDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "auth/login",
