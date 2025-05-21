@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import bookClub from "../../assets/bookClub.jpg";
@@ -77,10 +77,15 @@ const Banner = () => {
         {/* Swiper Slider */}
         <div className="w-full lg:w-2/3">
           <Swiper
+            modules={[Navigation, Autoplay]}
             slidesPerView={1}
             spaceBetween={20}
             navigation={true}
-            modules={[Navigation]}
+            loop
+            autoplay={{
+              delay: 1500, // ⏱️ delay between slides in milliseconds
+              disableOnInteraction: false, // ✅ keeps autoplay after user interaction
+            }}
             breakpoints={{
               640: { slidesPerView: 1.2 },
               768: { slidesPerView: 2.2 },
