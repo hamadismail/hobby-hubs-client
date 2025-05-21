@@ -1,10 +1,10 @@
-import React, { use } from "react";
-import GroupCard from "../components/GroupCard/GroupCard";
+import React, { use, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../providers/AuthContext";
 import Spinner from "../components/ui/Spinner";
 import { FaUsers } from "react-icons/fa6";
 import { FaEdit, FaInfoCircle, FaTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const MyGroup = () => {
   const { user } = use(AuthContext);
@@ -13,6 +13,39 @@ const MyGroup = () => {
 
   const groups = useLoaderData();
   const myGroups = groups.filter((group) => group.email === user.email);
+  const [myHobbyGroups, setMyHobbyGroups] = useState(myGroups);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/hobbies/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Coffee has been deleted.",
+                icon: "success",
+              });
+            }
+            // Update the state after deletion
+            setMyHobbyGroups((prev) =>
+              prev.filter((group) => group._id !== id)
+            );
+          });
+      }
+    });
+  };
 
   return (
     <div className="w-11/12 mx-auto px-4 py-10">
@@ -20,7 +53,7 @@ const MyGroup = () => {
         Explore All Hobby Groups
       </h2>
 
-      {myGroups.length === 0 ? (
+      {myHobbyGroups.length === 0 ? (
         <div className="text-center bg-base-100 p-10 rounded-xl shadow-md">
           <FaUsers className="text-5xl mx-auto mb-4" />
           <p className="text-lg font-semibold text-gray-600">
@@ -42,7 +75,7 @@ const MyGroup = () => {
               </tr>
             </thead>
             <tbody>
-              {myGroups.map((group, index) => (
+              {myHobbyGroups.map((group, index) => (
                 <tr key={group._id} className="hover">
                   <td>{index + 1}</td>
                   <td className="font-medium">{group.groupName}</td>
@@ -63,7 +96,10 @@ const MyGroup = () => {
                     >
                       <FaEdit className="text-sm" />
                     </button>
-                    <button className="btn btn-sm text-error flex items-center gap-1">
+                    <button
+                      onClick={() => handleDelete(group._id)}
+                      className="btn btn-sm text-error flex items-center gap-1"
+                    >
                       <FaTrashAlt className="text-sm" />
                     </button>
                   </td>

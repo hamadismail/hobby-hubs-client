@@ -9,6 +9,7 @@ import SignUp from "../pages/SignUp";
 import GroupDetails from "../components/GroupDetails/GroupDetails";
 import PrivateRoute from "./PrivateRoute";
 import UpdateGroup from "../pages/UpdateGroup";
+import Spinner from "../components/ui/Spinner";
 
 export const router = createBrowserRouter([
   {
@@ -17,11 +18,13 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+        hydrateFallbackElement: <Spinner />,
         loader: () => fetch("http://localhost:3000/hobbies"),
         Component: Home,
       },
       {
         path: "groups",
+        hydrateFallbackElement: <Spinner />,
         loader: () => fetch("http://localhost:3000/hobbies"),
         Component: AllGroup,
       },
@@ -35,6 +38,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "myGroups",
+        hydrateFallbackElement: <Spinner />,
         loader: () => fetch("http://localhost:3000/hobbies"),
         element: (
           <PrivateRoute>
@@ -44,12 +48,14 @@ export const router = createBrowserRouter([
       },
       {
         path: "updateGroup/:id",
+        hydrateFallbackElement: <Spinner />,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/hobbies/${params.id}`),
         Component: UpdateGroup,
       },
       {
         path: "group/:id",
+        hydrateFallbackElement: <Spinner />,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/hobbies/${params.id}`),
         Component: GroupDetails,
