@@ -17,6 +17,10 @@ const GroupCard = ({ group }) => {
     email,
   } = group || {};
 
+  const today = new Date();
+  const groupStartDate = new Date(date);
+  const isExpired = today > groupStartDate;
+
   return (
     <div className="card shadow-md hover:shadow-xl transition">
       <figure>
@@ -27,6 +31,7 @@ const GroupCard = ({ group }) => {
         <p className="text-sm">{description}</p>
         <div className="mt-2 text-xs">🌍 {location}</div>
         <div className="card-actions justify-end mt-4">
+          {!isExpired && <p className="text-success">Ongoing</p>}
           <button
             onClick={() => navigate(`/group/${_id}`)}
             className="btn btn-sm btn-outline"
