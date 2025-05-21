@@ -107,6 +107,7 @@ const Login = () => {
             <input
               type="text"
               name="email"
+              required
               placeholder="hamad.ismail.gub@gmail.com"
               className="input input-bordered w-full"
             />
@@ -117,6 +118,7 @@ const Login = () => {
             <input
               type="password"
               name="password"
+              required
               className="input input-bordered w-full"
             />
           </label>

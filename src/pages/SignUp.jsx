@@ -121,6 +121,7 @@ const SignUp = () => {
               placeholder="hamad.ismail.gub@gmail.com"
               name="email"
               className="input input-bordered w-full"
+              required
             />
           </label>
           <label className="form-control w-full mb-4">
@@ -139,6 +140,7 @@ const SignUp = () => {
               type="password"
               name="password"
               className="input input-bordered w-full mb-4"
+              required
             />
           </label>
 
