@@ -8,11 +8,8 @@
 
 ## 🚀 Features
 
-- Firebase Authentication (Email/Password & Google)
-- Protected Routes using React Router
 - Create, Read, Update, Delete hobby groups
 - Join button disabled after group start date
-- SweetAlert2 and React Toastify for alerts
 - Responsive design (mobile, tablet, desktop)
 - Dark/Light theme toggle
 - Typewriter and animation effects
@@ -25,9 +22,36 @@
 - Firebase Auth
 - SweetAlert2, React Simple Typewriter, React Tooltip
 
-## ⚙️ Environment Variables
+## 📦 NPM Packages Used
 
-Create a `.env.local` file and add:
+- `sweetalert2`
+- `react-tooltip`
+- `tailwindcss`
+- `react-simple-typewriter`
+- `react-icons`
+- `react-spinners`
+
+## 📦 Setup Guide
+
+### ✅ Prerequisites
+
+- Node.js and npm installed
+- Firebase project (for authentication)
+
+### Clone the repository:
+
+```bash
+git clone https://github.com/hamadismail/hobby-hubs-client.git
+cd hobby-hubs-client
+```
+
+### Install dependencies:
+
+```bash
+npm install
+```
+
+### Create a .env.local file in the root and add:
 
 ```bash
 VITE_apiKey=your_firebase_api_key
@@ -38,9 +62,17 @@ VITE_messagingSenderId=your_sender_id
 VITE_appId=your_app_id
 ```
 
-## 📦 Installation
+### Start the development server:
 
 ```bash
-npm install
 npm run dev
 ```
+
+## 📫 Contact
+
+Feel free to reach out with any questions or feedback!
+
+- 💻 GitHub: hamadismail
+
+- 📧 Email: hamad.ismail.gub@gmail.com
+
