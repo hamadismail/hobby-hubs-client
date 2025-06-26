@@ -100,7 +100,7 @@ const SignUp = () => {
         <h1 className="text-3xl font-semibold mb-4">
           <span className="inline-block mr-1">⚽</span>
           <span className="font-bold">Hobby</span>
-          <span className="text-success font-light"> HUB</span>
+          <span className="text-warning-content font-light"> HUB</span>
         </h1>
 
         {/* Form */}
@@ -146,13 +146,13 @@ const SignUp = () => {
 
           {err && <label className="text-error mb-8">{err}</label>}
 
-          <button type="submit" className="btn btn-neutral w-full my-4">
+          <button type="submit" className="btn bg-warning-content text-white w-full my-4">
             Sign Up
           </button>
 
           <p className="text-sm text-ce1nter text-base-content">
             Already have and account?{" "}
-            <Link to="/auth/login" className="text-success hover:underline">
+            <Link to="/auth/login" className="text-warning-content hover:underline">
               Login Account
             </Link>
           </p>

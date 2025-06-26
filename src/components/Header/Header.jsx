@@ -97,7 +97,7 @@ const Header = () => {
               />
               <button
                 onClick={handleLogOut}
-                className="btn rounded-lg bg-neutral text-neutral-content"
+                className="btn rounded-lg bg-warning-content text-primary-content"
               >
                 Logout
               </button>
@@ -105,7 +105,7 @@ const Header = () => {
           ) : (
             <Link
               to="/auth/login"
-              className="btn rounded-lg bg-neutral text-neutral-content"
+              className="btn rounded-lg bg-warning-content text-neutral-content"
             >
               Login
             </Link>

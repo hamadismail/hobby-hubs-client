@@ -7,6 +7,7 @@ import { useLoaderData } from "react-router";
 import "./Home/Banner/embla.css";
 import EmblaCarousel from "./Home/Banner/EmblaCarousel";
 import HeroSlider from "./Home/Banner/HeroSlider";
+import OurMission from "./AboutUs/OurMission";
 
 const OPTIONS = {};
 const SLIDE_COUNT = 5;
@@ -20,6 +21,7 @@ const Home = () => {
       <HeroSlider />
       <FeaturedGroups groups={groups} />
       <WhyToChoose />
+      <OurMission />
       <Testimonials />
     </div>
   );

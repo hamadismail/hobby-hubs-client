@@ -97,7 +97,7 @@ const Login = () => {
         <h1 className="text-3xl font-semibold mb-4">
           <span className="inline-block mr-1">⚽</span>
           <span className="font-bold">Hobby</span>
-          <span className="text-success font-light"> HUB</span>
+          <span className="text-warning-content font-light"> HUB</span>
         </h1>
 
         {/* Form */}
@@ -124,13 +124,13 @@ const Login = () => {
           </label>
 
           <div className="mb-4 flex items-center justify-between">
-            <a className="text-sm text-success hover:underline cursor-pointer">
+            <a className="text-sm text-warning-content hover:underline cursor-pointer">
               Forgot password?
             </a>
             {err && <p className="text-sm text-error">{err}</p>}
           </div>
 
-          <button type="submit" className="btn btn-neutral w-full mb-4">
+          <button type="submit" className="btn bg-warning-content text-primary-content w-full mb-4">
             Sign in
           </button>
 
@@ -138,15 +138,15 @@ const Login = () => {
 
           <button
             onClick={handleGoogleLogIn}
-            className="btn btn-outline w-full flex items-center gap-2 mb-4"
+            className="btn btn-outline text-warning-content w-full flex items-center gap-2 mb-4"
           >
             <FaGoogle />
             Sign in with Google
           </button>
 
-          <p className="text-sm text-ce1nter text-base-content">
+          <p className="text-sm text-center text-base-content">
             Are you new?{" "}
-            <Link to="/auth/signup" className="text-success hover:underline">
+            <Link to="/auth/signup" className="text-warning-content hover:underline">
               Create an Account
             </Link>
           </p>

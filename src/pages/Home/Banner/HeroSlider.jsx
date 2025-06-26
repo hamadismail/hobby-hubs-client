@@ -8,6 +8,7 @@ import hiking from "../../../assets/hiking.jpg";
 import painting from "../../../assets/painting.jpg";
 import photography from "../../../assets/photography.jpg";
 import game from "../../../assets/game.jpg";
+import { useNavigate } from "react-router";
 
 const slides = [
   {
@@ -15,7 +16,6 @@ const slides = [
     subtitle: "Bangladesh",
     description: "Welcome to the book club",
     image: bookClub,
-    path: '/'
   },
   {
     title: "HIKING CREW",
@@ -44,6 +44,7 @@ const slides = [
 ];
 
 const HeroSlider = () => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [sliderRef, instanceRef] = useKeenSlider({
     loop: true,
@@ -122,7 +123,10 @@ const HeroSlider = () => {
               {activeSlide.title}
             </h1>
             <p className="text-gray-200 text-lg">{activeSlide.description}</p>
-            <button className="mt-4 px-4 py-2 bg-yellow-400 text-black font-semibold rounded-full hover:bg-yellow-300">
+            <button
+              onClick={() => navigate("/groups")}
+              className="cursor-pointer mt-4 px-4 py-2 bg-yellow-400 text-black font-semibold rounded-full hover:bg-yellow-300"
+            >
               Book your destination
             </button>
           </motion.div>
