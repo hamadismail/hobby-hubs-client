@@ -38,7 +38,7 @@ const Header = () => {
   );
 
   return (
-    <div className="bg-base-100 shadow-sm">
+    <div className="backdrop-blur-md shadow-sm absolute top-0 z-20 w-full">
       <Tooltip id="my-tooltip" />
       <div className="navbar p-0 w-11/12 mx-auto">
         {/* navbar start */}
@@ -63,7 +63,7 @@ const Header = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>

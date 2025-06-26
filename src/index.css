@@ -15,7 +15,7 @@
 } */
 
 /* light cupcake theme */
-@plugin "daisyui/theme" {
+/* @plugin "daisyui/theme" {
   name: "light";
   default: false;
   prefersdark: false;
@@ -48,11 +48,9 @@
   --border: 2px;
   --depth: 1;
   --noise: 0;
-}
-
+} */
 /* dark forest theme */
-
-@plugin "daisyui/theme" {
+/* @plugin "daisyui/theme" {
   name: "dark";
   default: false;
   prefersdark: false;
@@ -85,7 +83,100 @@
   --border: 1px;
   --depth: 0;
   --noise: 0;
+} */
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: false;
+  prefersdark: false;
+  color-scheme: "light";
+
+  --color-base-100: oklch(98% 0.004 95);         /* ivory white */
+  --color-base-200: oklch(95% 0.01 95);          /* light yellow grey */
+  --color-base-300: oklch(91% 0.01 95);          /* light neutral */
+  --color-base-content: oklch(18% 0.05 80);      /* dark muted text */
+
+  --color-primary: oklch(90% 0.18 95);           /* golden yellow */
+  --color-primary-content: oklch(20% 0.02 95);   /* near-black on yellow */
+
+  --color-secondary: oklch(85% 0.14 55);         /* warm orange-yellow */
+  --color-secondary-content: oklch(20% 0.02 55); /* dark base for contrast */
+
+  --color-accent: oklch(88% 0.1 135);            /* lime accent */
+  --color-accent-content: oklch(20% 0.02 135);   /* dark green text */
+
+  --color-neutral: oklch(89% 0.01 90);           /* off-white beige */
+  --color-neutral-content: oklch(25% 0.03 90);   /* soft brown-grey text */
+
+  --color-info: oklch(84% 0.14 240);             /* soft sky blue */
+  --color-info-content: oklch(20% 0.04 240);
+
+  --color-success: oklch(80% 0.16 140);          /* spring green */
+  --color-success-content: oklch(22% 0.04 140);
+
+  --color-warning: oklch(92% 0.18 85);           /* bright lemon */
+  --color-warning-content: oklch(25% 0.03 85);
+
+  --color-error: oklch(76% 0.22 25);             /* soft tomato red */
+  --color-error-content: oklch(20% 0.04 25);
+
+  --radius-selector: 1rem;
+  --radius-field: 2rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 2px;
+  --depth: 1;
+  --noise: 0;
 }
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+
+  --color-base-100: oklch(16% 0.01 90);           /* near-black warm */
+  --color-base-200: oklch(13% 0.01 90);
+  --color-base-300: oklch(10% 0.01 90);
+  --color-base-content: oklch(92% 0.01 90);       /* off-white text */
+
+  --color-primary: oklch(83% 0.18 90);            /* golden yellow (bright) */
+  --color-primary-content: oklch(12% 0.01 90);    /* deep dark for contrast */
+
+  --color-secondary: oklch(78% 0.15 65);          /* amber/caramel tone */
+  --color-secondary-content: oklch(12% 0.01 65);
+
+  --color-accent: oklch(76% 0.12 135);            /* soft lime green */
+  --color-accent-content: oklch(10% 0.01 135);
+
+  --color-neutral: oklch(22% 0.01 90);            /* charcoal */
+  --color-neutral-content: oklch(88% 0.01 90);    /* ivory white */
+
+  --color-info: oklch(76% 0.15 240);              /* sky blue */
+  --color-info-content: oklch(12% 0.01 240);
+
+  --color-success: oklch(72% 0.15 140);           /* forest green */
+  --color-success-content: oklch(10% 0.01 140);
+
+  --color-warning: oklch(88% 0.18 85);            /* lemon yellow */
+  --color-warning-content: oklch(10% 0.01 85);
+
+  --color-error: oklch(70% 0.22 25);              /* warm red */
+  --color-error-content: oklch(10% 0.01 25);
+
+  --radius-selector: 1rem;
+  --radius-field: 2rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+
+
 
 * {
   font-family: "Barlow";
