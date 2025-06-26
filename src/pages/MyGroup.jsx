@@ -129,7 +129,7 @@ const MyGroup = () => {
                           <FaInfoCircle className="h-4 w-4 cursor-pointer" />
                         </button>
                         <button
-                          onClick={() => navigate(`/updateGroup/${group._id}`)}
+                          onClick={() => navigate(`/dashboard/updateGroup/${group._id}`)}
                           className="text-yellow-600 hover:text-yellow-900 p-1 rounded-full hover:bg-yellow-50 transition-colors"
                           title="Edit"
                         >

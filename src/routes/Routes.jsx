@@ -13,6 +13,7 @@ import Spinner from "../components/ui/Spinner";
 import Error from "../pages/Error";
 import DashboardLayout from "../layouts/DashboardLayout";
 import DashboardStats from "../pages/Dashboard/DashboardStates";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -35,19 +36,6 @@ export const router = createBrowserRouter([
         Component: AllGroup,
       },
       {
-        path: "updateGroup/:id",
-        hydrateFallbackElement: <Spinner />,
-        loader: ({ params }) =>
-          fetch(
-            `https://hobby-hub-server-seven.vercel.app/hobbies/${params.id}`
-          ),
-        element: (
-          <PrivateRoute>
-            <UpdateGroup />
-          </PrivateRoute>
-        ),
-      },
-      {
         path: "group/:id",
         hydrateFallbackElement: <Spinner />,
         loader: ({ params }) =>
@@ -59,6 +47,10 @@ export const router = createBrowserRouter([
             <GroupDetails />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/about-us",
+        Component: AboutUs,
       },
       {
         path: "auth/login",
@@ -104,6 +96,19 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyGroup />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "updateGroup/:id",
+        hydrateFallbackElement: <Spinner />,
+        loader: ({ params }) =>
+          fetch(
+            `https://hobby-hub-server-seven.vercel.app/hobbies/${params.id}`
+          ),
+        element: (
+          <PrivateRoute>
+            <UpdateGroup />
           </PrivateRoute>
         ),
       },

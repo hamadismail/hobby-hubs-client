@@ -39,7 +39,7 @@ const CreateGroup = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto mt-16 mb-12 p-6 bg-base-100 rounded-xl shadow-lg">
+    <div className="w-11/12 mx-auto mt-8 mb-12 p-6 bg-base-100 rounded-xl shadow-lg">
       <h2 className="text-3xl font-bold text-center mb-8">
         Create a New Group
       </h2>

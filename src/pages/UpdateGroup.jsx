@@ -49,7 +49,7 @@ const UpdateGroup = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto mb-12 p-6 bg-base-100 rounded-xl shadow-lg mt-16">
+    <div className="w-11/12 mx-auto mb-12 p-6 bg-base-100 rounded-xl shadow-lg mt-8">
       <h2 className="text-3xl font-bold text-center mb-8">Update Group</h2>
       <form
         onSubmit={handleUpdateGroup}

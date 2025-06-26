@@ -34,7 +34,7 @@ const Header = () => {
         <NavLink to="groups">All Groups</NavLink>
       </li>
       <li>
-        <NavLink to="about">About Us</NavLink>
+        <NavLink to="about-us">About Us</NavLink>
       </li>
     </>
   );
