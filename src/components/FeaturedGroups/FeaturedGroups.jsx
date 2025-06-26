@@ -2,10 +2,10 @@ import React from "react";
 import GroupCard from "../GroupCard/GroupCard";
 
 const FeaturedGroups = ({ groups }) => {
-  const today = new Date();
-  const featuredGroup = groups.filter((group) => new Date(group.date) > today);
+  // const today = new Date();
+  // const featuredGroup = groups.filter((group) => new Date(group.date) > today);
 
-  const featured = featuredGroup.slice(0, 6);
+  const featured = groups.slice(0, 4);
 
   return (
     <section className="my-8 w-11/12 mx-auto bg-base-100">

@@ -26,7 +26,7 @@ const CreateGroup = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          navigate("/myGroups");
+          navigate("/dashboard/myGroups");
           Swal.fire({
             title: "New Hobby Category added successfully!",
             icon: "success",

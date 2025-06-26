@@ -11,6 +11,8 @@ import PrivateRoute from "./PrivateRoute";
 import UpdateGroup from "../pages/UpdateGroup";
 import Spinner from "../components/ui/Spinner";
 import Error from "../pages/Error";
+import DashboardLayout from "../layouts/DashboardLayout";
+import DashboardStats from "../pages/Dashboard/DashboardStates";
 
 export const router = createBrowserRouter([
   {
@@ -31,25 +33,6 @@ export const router = createBrowserRouter([
         loader: () =>
           fetch("https://hobby-hub-server-seven.vercel.app/hobbies"),
         Component: AllGroup,
-      },
-      {
-        path: "createGroup",
-        element: (
-          <PrivateRoute>
-            <CreateGroup />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "myGroups",
-        hydrateFallbackElement: <Spinner />,
-        loader: () =>
-          fetch("https://hobby-hub-server-seven.vercel.app/hobbies"),
-        element: (
-          <PrivateRoute>
-            <MyGroup />
-          </PrivateRoute>
-        ),
       },
       {
         path: "updateGroup/:id",
@@ -84,6 +67,45 @@ export const router = createBrowserRouter([
       {
         path: "auth/signup",
         Component: SignUp,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        loader: () =>
+          fetch("https://hobby-hub-server-seven.vercel.app/hobbies"),
+        element: (
+          <PrivateRoute>
+            <DashboardStats />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "createGroup",
+        element: (
+          <PrivateRoute>
+            <CreateGroup />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "myGroups",
+        hydrateFallbackElement: <Spinner />,
+        loader: () =>
+          fetch("https://hobby-hub-server-seven.vercel.app/hobbies"),
+        element: (
+          <PrivateRoute>
+            <MyGroup />
+          </PrivateRoute>
+        ),
       },
     ],
   },

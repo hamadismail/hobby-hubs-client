@@ -2,8 +2,7 @@ import React, { use, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../providers/AuthContext";
 import Spinner from "../components/ui/Spinner";
-import { FaUsers } from "react-icons/fa6";
-import { FaEdit, FaInfoCircle, FaTrashAlt } from "react-icons/fa";
+import { FaUsers, FaEdit, FaInfoCircle, FaTrashAlt, FaPlus } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const MyGroup = () => {
@@ -34,79 +33,122 @@ const MyGroup = () => {
             if (data.deletedCount) {
               Swal.fire({
                 title: "Deleted!",
-                text: "Your Coffee has been deleted.",
+                text: "Your group has been deleted.",
                 icon: "success",
               });
+              setMyHobbyGroups((prev) => prev.filter((group) => group._id !== id));
             }
-            // Update the state after deletion
-            setMyHobbyGroups((prev) =>
-              prev.filter((group) => group._id !== id)
-            );
           });
       }
     });
   };
 
   return (
-    <div className="w-11/12 mx-auto px-4 py-10 mt-16">
-      <h2 className="text-3xl font-bold text-center mb-10">
-        Explore All Hobby Groups
-      </h2>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="flex justify-between items-center mb-8">
+        <h2 className="text-2xl font-bold text-gray-800">My Hobby Groups</h2>
+        <button
+          onClick={() => navigate("/dashboard/createGroup")}
+          className="btn btn-primary flex items-center gap-2"
+        >
+          <FaPlus /> Create New Group
+        </button>
+      </div>
 
       {myHobbyGroups.length === 0 ? (
-        <div className="text-center bg-base-100 p-10 rounded-xl shadow-md">
-          <FaUsers className="text-5xl mx-auto mb-4" />
-          <p className="text-lg font-semibold text-gray-600">
-            You haven't created any groups yet.
-          </p>
+        <div className="text-center bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+          <FaUsers className="text-5xl mx-auto mb-4 text-gray-400" />
+          <h3 className="text-xl font-semibold text-gray-700 mb-2">No Groups Yet</h3>
+          <p className="text-gray-500 mb-4">You haven't created any hobby groups.</p>
+          <button
+            onClick={() => navigate("/dashboard/createGroup")}
+            className="btn btn-primary"
+          >
+            Create Your First Group
+          </button>
         </div>
       ) : (
-        <div className="overflow-x-auto bg-base-100 rounded-xl shadow">
-          <table className="table w-full text-sm">
-            <thead className="bg-base-200 text-base font-semibold">
-              <tr>
-                <th>#</th>
-                <th>Group Name</th>
-                <th>Category</th>
-                <th>Location</th>
-                <th>Start Date</th>
-                <th>Max Members</th>
-                <th className="text-center">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {myHobbyGroups.map((group, index) => (
-                <tr key={group._id} className="hover">
-                  <td>{index + 1}</td>
-                  <td className="font-medium">{group.groupName}</td>
-                  <td>{group.hobbyCategory}</td>
-                  <td>{group.location}</td>
-                  <td>{group.date}</td>
-                  <td>{group.members}</td>
-                  <td className="flex gap-2 justify-center items-center py-2">
-                    <button
-                      onClick={() => navigate(`/group/${group._id}`)}
-                      className="btn btn-sm flex items-center gap-1"
-                    >
-                      <FaInfoCircle className="text-sm" />
-                    </button>
-                    <button
-                      onClick={() => navigate(`/updateGroup/${group._id}`)}
-                      className="btn btn-sm flex items-center gap-1"
-                    >
-                      <FaEdit className="text-sm" />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(group._id)}
-                      className="btn btn-sm text-error flex items-center gap-1"
-                    >
-                      <FaTrashAlt className="text-sm" />
-                    </button>
-                  </td>
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    #
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Group Name
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Category
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Location
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Date
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Members
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {myHobbyGroups.map((group, index) => (
+                  <tr key={group._id} className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {index + 1}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm font-medium text-gray-900">{group.groupName}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
+                        {group.hobbyCategory}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {group.location}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {group.date}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {group.members}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      <div className="flex justify-end space-x-2">
+                        <button
+                          onClick={() => navigate(`/group/${group._id}`)}
+                          className="text-blue-600 hover:text-blue-900 p-1 rounded-full hover:bg-blue-50 transition-colors"
+                          title="View Details"
+                        >
+                          <FaInfoCircle className="h-4 w-4 cursor-pointer" />
+                        </button>
+                        <button
+                          onClick={() => navigate(`/updateGroup/${group._id}`)}
+                          className="text-yellow-600 hover:text-yellow-900 p-1 rounded-full hover:bg-yellow-50 transition-colors"
+                          title="Edit"
+                        >
+                          <FaEdit className="h-4 w-4 cursor-pointer" />
+                        </button>
+                        <button
+                          onClick={() => handleDelete(group._id)}
+                          className="text-red-600 hover:text-red-900 p-1 rounded-full hover:bg-red-50 transition-colors"
+                          title="Delete"
+                        >
+                          <FaTrashAlt className="h-4 w-4 cursor-pointer" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>

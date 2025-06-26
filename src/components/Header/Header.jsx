@@ -36,17 +36,11 @@ const Header = () => {
       <li>
         <NavLink to="about">About Us</NavLink>
       </li>
-      {/* <li>
-        <NavLink to="createGroup">Create Group</NavLink>
-      </li>
-      <li>
-        <NavLink to="myGroups">My Groups</NavLink>
-      </li> */}
     </>
   );
 
   return (
-    <div className="bg-base-300/60 backdrop-blur-md shadow-sm fixed top-0 z-200 w-full">
+    <div className="bg-base-300/80 backdrop-blur-md shadow-sm fixed top-0 z-200 w-full">
       <Tooltip id="my-tooltip" />
       <div className="navbar p-0 w-11/12 mx-auto">
         {/* navbar start */}
