@@ -15,6 +15,7 @@ const slides = [
     subtitle: "Bangladesh",
     description: "Welcome to the book club",
     image: bookClub,
+    path: '/'
   },
   {
     title: "HIKING CREW",
@@ -85,14 +86,22 @@ const HeroSlider = () => {
   const goNext = () => instanceRef.current?.next();
 
   return (
-    <div
-      className="relative w-full text-white overflow-hidden min-h-screen flex items-end"
-      style={{
-        backgroundImage: `url(${activeSlide.image})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+    <div className="relative w-full text-white overflow-hidden min-h-screen flex items-end">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeSlide.image}
+          initial={{ opacity: 0.8, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0.8, scale: 1.05 }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 w-full h-full z-0"
+          style={{
+            backgroundImage: `url(${activeSlide.image})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+      </AnimatePresence>
       <div className="absolute inset-0 bg-black/50 z-10" />
 
       <div className="w-11/12 mx-auto relative z-20 flex flex-col gap-8 lg:flex-row justify-end items-end h-full py-12">

@@ -25,7 +25,7 @@ const GroupDetails = () => {
   const isExpired = today > groupStartDate;
 
   return (
-    <div className="w-11/12 md:w-10/12 mx-auto px-4 py-10">
+    <div className="w-11/12 md:w-10/12 mx-auto px-4 py-10 mt-16">
       <div className="bg-base-100 shadow-xl rounded-xl overflow-hidden">
         <div className="md:flex">
           {/* Group Image */}

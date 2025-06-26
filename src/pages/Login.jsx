@@ -74,7 +74,7 @@ const Login = () => {
 
   if (loader) return <Spinner />;
   return (
-    <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 bg-base-100">
+    <div className="grid grid-cols-1 md:grid-cols-2 bg-base-100 mt-16">
       {/* Left side - Illustration + Description */}
       <div className="flex flex-col justify-center items-center p-10">
         <img

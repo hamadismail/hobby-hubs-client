@@ -25,20 +25,28 @@ const Header = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
+      {user && (
+        <li>
+          <NavLink to="dashboard">Dashboard</NavLink>
+        </li>
+      )}
       <li>
         <NavLink to="groups">All Groups</NavLink>
       </li>
       <li>
+        <NavLink to="about">About Us</NavLink>
+      </li>
+      {/* <li>
         <NavLink to="createGroup">Create Group</NavLink>
       </li>
       <li>
         <NavLink to="myGroups">My Groups</NavLink>
-      </li>
+      </li> */}
     </>
   );
 
   return (
-    <div className="backdrop-blur-md shadow-sm absolute top-0 z-20 w-full">
+    <div className="bg-base-300/60 backdrop-blur-md shadow-sm fixed top-0 z-200 w-full">
       <Tooltip id="my-tooltip" />
       <div className="navbar p-0 w-11/12 mx-auto">
         {/* navbar start */}

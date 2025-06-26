@@ -48,7 +48,7 @@ const MyGroup = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto px-4 py-10">
+    <div className="w-11/12 mx-auto px-4 py-10 mt-16">
       <h2 className="text-3xl font-bold text-center mb-10">
         Explore All Hobby Groups
       </h2>
