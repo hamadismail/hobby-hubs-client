@@ -7,6 +7,7 @@ import {
   FaGithub,
   FaFacebook,
 } from "react-icons/fa6";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -27,39 +28,46 @@ const Footer = () => {
               connect and grow communities around shared passions.
             </p>
             <div className="flex gap-4 mt-4 text-xl text-gray-600">
-              <FaXTwitter className="hover:text-neutral cursor-pointer" />
-              <FaLinkedin className="hover:text-neutral cursor-pointer" />
-              <FaFacebook className="hover:text-neutral cursor-pointer" />
-              <FaGithub className="hover:text-neutral cursor-pointer" />
-              <FaInstagram className="hover:text-neutral cursor-pointer" />
+              <Link to="https://x.com/hamadismail_" target="_blank">
+                <FaXTwitter className="hover:text-neutral cursor-pointer" />
+              </Link>
+              <Link to="https://github.com/hamadismail/" target="_blank">
+                <FaGithub className="hover:text-neutral cursor-pointer" />
+              </Link>
+              <Link
+                to="https://www.linkedin.com/in/hamadismail/"
+                target="_blank"
+              >
+                <FaLinkedin className="hover:text-neutral cursor-pointer" />
+              </Link>
             </div>
           </div>
 
           {/* Explore */}
           <div className="flex flex-col">
             <h3 className="footer-title">Explore</h3>
-            <a className="link link-hover">Discover Groups</a>
-            <a className="link link-hover">Start a Group</a>
-            <a className="link link-hover">Browse Categories</a>
-            <a className="link link-hover">Events</a>
+            <Link to="/groups" className="link link-hover">Discover Groups</Link>
+            <Link to="/dashboard/createGroup" className="link link-hover">Start a Group</Link>
+            <Link to="/" className="link link-hover">Browse Categories</Link>
+            <Link to="/about-us" className="link link-hover">Events</Link>
           </div>
 
           {/* Resources */}
           <div className="flex flex-col">
             <h3 className="footer-title">Resources</h3>
-            <a className="link link-hover">Help Center</a>
-            <a className="link link-hover">Community Guidelines</a>
-            <a className="link link-hover">Blog</a>
-            <a className="link link-hover">Safety Tips</a>
+            <Link to="/about-us" className="link link-hover">Help Center</Link>
+            <Link to="/about-us" className="link link-hover">Community Guidelines</Link>
+            <Link to="/about-us" className="link link-hover">Blog</Link>
+            <Link to="/about-us" className="link link-hover">Safety Tips</Link>
           </div>
 
           {/* Company */}
           <div className="flex flex-col">
             <h3 className="footer-title">Company</h3>
-            <a className="link link-hover">About Us</a>
-            <a className="link link-hover">Careers</a>
-            <a className="link link-hover">Contact</a>
-            <a className="link link-hover">Partners</a>
+            <Link to="/about-us" className="link link-hover">About Us</Link>
+            <Link to="/about-us" className="link link-hover">Careers</Link>
+            <Link to="/about-us" className="link link-hover">Contact</Link>
+            <Link to="/about-us" className="link link-hover">Partners</Link>
           </div>
         </div>
       </div>
